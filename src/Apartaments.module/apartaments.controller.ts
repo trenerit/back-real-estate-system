@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Delete, Get, Param } from '@nestjs/common';
 import { ApartamentsService } from './apartaments.service';
 import { Apartaments } from 'src/Entities/apartaments';
 
@@ -9,5 +9,10 @@ export class ApartamentsController {
   @Get()
   getApartaments(): Promise<Apartaments[]> {
     return this.apartamentsService.getApartaments();
+  }
+  
+  @Delete(':idRecord')
+  delApartaments(@Param('idRecord') idRecord: number): void {
+    this.apartamentsService.delApartaments(idRecord);
   }
 }

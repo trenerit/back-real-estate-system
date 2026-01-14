@@ -9,10 +9,13 @@ export class ApartamentsService {
   constructor(
     @InjectRepository(Apartaments)
     private apartamentsRepository: Repository<Apartaments>,
-  ) {}
+  ) { }
 
   getApartaments(): Promise<Apartaments[]> {
-
-  return this.apartamentsRepository.find();
-}
+    return this.apartamentsRepository.find();
+  }
+  
+  delApartaments(id: number): void {
+    this.apartamentsRepository.delete(id);
+  }
 }
