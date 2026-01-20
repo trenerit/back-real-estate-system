@@ -15,6 +15,10 @@ export class ApartamentsService {
     return this.apartamentsRepository.find();
   }
   
+  getApartament(idRecord: number): Promise<Apartaments | null> {
+    return this.apartamentsRepository.findOneBy({id: idRecord});
+  }
+  
   delApartaments(id: number): void {
     this.apartamentsRepository.delete(id);
   }

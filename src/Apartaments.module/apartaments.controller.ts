@@ -11,6 +11,11 @@ export class ApartamentsController {
     return this.apartamentsService.getApartaments();
   }
   
+  @Get(':idRecord')
+  getApartament(@Param('idRecord') idRecord: number): Promise<Apartaments | null> {
+    return this.apartamentsService.getApartament(idRecord);
+  }
+  
   @Delete(':idRecord')
   delApartaments(@Param('idRecord') idRecord: number): void {
     this.apartamentsService.delApartaments(idRecord);
