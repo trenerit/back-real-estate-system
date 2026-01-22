@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApartamentsService } from './apartaments.service';
 import { Apartaments } from 'src/Entities/apartaments';
 
@@ -24,5 +24,10 @@ export class ApartamentsController {
   @Post()
   addApartament(@Body() data: Apartaments): void {
     this.apartamentsService.addApartament(data);
+  }
+  
+  @Patch()
+  modApartament(@Body() data: Apartaments): void {
+    this.apartamentsService.modApartament(data);
   }
 }
