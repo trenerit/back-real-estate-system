@@ -22,4 +22,10 @@ export class ApartamentsService {
   delApartaments(id: number): void {
     this.apartamentsRepository.delete(id);
   }
+
+  addApartament(data: Apartaments): Promise<Apartaments | null> {
+    return this.apartamentsRepository.save(data);
+  }
+
+  
 }

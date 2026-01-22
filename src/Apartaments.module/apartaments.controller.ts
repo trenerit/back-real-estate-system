@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ApartamentsService } from './apartaments.service';
 import { Apartaments } from 'src/Entities/apartaments';
 
@@ -19,5 +19,10 @@ export class ApartamentsController {
   @Delete(':idRecord')
   delApartaments(@Param('idRecord') idRecord: number): void {
     this.apartamentsService.delApartaments(idRecord);
+  }
+  
+  @Post()
+  addApartament(@Body() data: Apartaments): void {
+    this.apartamentsService.addApartament(data);
   }
 }
