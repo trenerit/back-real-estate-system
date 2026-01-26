@@ -13,13 +13,17 @@ export class ApartamentsService {
   ) { }
 
   getApartaments(): Promise<Apartaments[]> {
-    return this.apartamentsRepository.find();
+    return this.apartamentsRepository.find({
+      order: {
+        id: "DESC",
+      }
+    });
   }
-  
+
   getApartament(idRecord: number): Promise<Apartaments | null> {
-    return this.apartamentsRepository.findOneBy({id: idRecord});
+    return this.apartamentsRepository.findOneBy({ id: idRecord });
   }
-  
+
   delApartaments(id: number): void {
     this.apartamentsRepository.delete(id);
   }
@@ -27,12 +31,12 @@ export class ApartamentsService {
   addApartament(data: Apartaments): Promise<Apartaments | null> {
     return this.apartamentsRepository.save(data);
   }
-  
+
   modApartament(data: Apartaments): Promise<UpdateResult> {
     const id = data.id;
     console.log(id);
     return this.apartamentsRepository.update(id, data);
   }
 
-  
+
 }
