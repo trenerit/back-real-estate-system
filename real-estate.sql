@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sty 13, 2026 at 03:34 PM
+-- Generation Time: Sty 27, 2026 at 04:03 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -29,8 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `apartaments` (
   `id` int(11) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `city` varchar(100) NOT NULL,
   `price` decimal(9,2) NOT NULL,
+  `picture` varchar(50) DEFAULT NULL,
   `date_add` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
@@ -38,10 +40,13 @@ CREATE TABLE `apartaments` (
 -- Dumping data for table `apartaments`
 --
 
-INSERT INTO `apartaments` (`id`, `city`, `price`, `date_add`) VALUES
-(1, 'Kraków', 75000.00, '2026-01-12 10:56:01'),
-(2, 'Wrocław', 200000.00, '2026-01-12 11:01:52'),
-(3, 'Warszawa', 300000.00, '2026-01-12 11:05:12');
+INSERT INTO `apartaments` (`id`, `description`, `city`, `price`, `picture`, `date_add`) VALUES
+(6, 'Dom jednorodzinny', 'Chodów', 1234.00, 'apartment1.png', '2026-01-21 15:47:06'),
+(7, 'Mieszkanie 60m', 'Gdańsk', 200000.00, 'apartment1.png', '2026-01-21 16:11:37'),
+(8, 'Dom bliźniak', 'Kraków', 190000.00, 'apartment1.png', '2026-01-22 12:39:08'),
+(10, 'Dom w stanie deweloperskim', 'Wrocław', 2000000.00, 'apartment1.png', '2026-01-22 12:45:24'),
+(11, 'Mieszkanie na nowym osiedlu', 'Kraków', 123.00, 'apartment1.png', '2026-01-23 13:32:44'),
+(12, 'Dom jednorodzinny z ogrodem', 'Kraków', 1000000.00, NULL, '2026-01-26 17:00:32');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -61,7 +66,7 @@ ALTER TABLE `apartaments`
 -- AUTO_INCREMENT for table `apartaments`
 --
 ALTER TABLE `apartaments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
