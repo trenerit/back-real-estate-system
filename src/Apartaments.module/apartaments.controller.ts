@@ -16,6 +16,11 @@ export class ApartamentsController {
     return this.apartamentsService.getApartament(idRecord);
   }
   
+  @Get('/search/:nameColumn/:inputNameText')
+  searchApartaments(@Param('nameColumn') nameColumn: string, @Param('inputNameText') inputNameText: string): Promise<Apartaments[] | null> {
+    return this.apartamentsService.searchApartaments(nameColumn, inputNameText);
+  }
+  
   @Delete(':idRecord')
   delApartaments(@Param('idRecord') idRecord: number): void {
     this.apartamentsService.delApartaments(idRecord);

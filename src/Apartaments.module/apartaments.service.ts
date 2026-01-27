@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Apartaments } from 'src/Entities/apartaments';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { UpdateResult } from 'typeorm/browser';
 
 @Injectable()
@@ -22,6 +22,11 @@ export class ApartamentsService {
 
   getApartament(idRecord: number): Promise<Apartaments | null> {
     return this.apartamentsRepository.findOneBy({ id: idRecord });
+  }
+  
+  searchApartaments(nameColumn: string, inputNameText: string): Promise<Apartaments[] | null> {
+    console.log(inputNameText)
+    return this.apartamentsRepository.findBy({ city: Like(`${inputNameText}%`) });
   }
 
   delApartaments(id: number): void {
