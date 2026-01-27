@@ -25,7 +25,6 @@ export class ApartamentsService {
   }
   
   searchApartaments(nameColumn: string, inputNameText: string): Promise<Apartaments[] | null> {
-    console.log(inputNameText)
     return this.apartamentsRepository.findBy({ city: Like(`${inputNameText}%`) });
   }
 
