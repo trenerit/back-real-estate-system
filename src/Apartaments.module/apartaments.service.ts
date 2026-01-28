@@ -24,8 +24,14 @@ export class ApartamentsService {
     return this.apartamentsRepository.findOneBy({ id: idRecord });
   }
   
-  searchApartaments(nameColumn: string, inputNameText: string): Promise<Apartaments[] | null> {
-    return this.apartamentsRepository.findBy({ city: Like(`${inputNameText}%`) });
+  searchApartaments(queryData: {column: string, partQuery: string}): Promise<Apartaments[] | null> {
+    console.log(queryData);
+    const simpleQuery = queryData.partQuery;
+    
+    if(queryData.column == 'city') {
+      return this.apartamentsRepository.findBy({ city: Like(`${simpleQuery}%`) });
+    }
+    return this.apartamentsRepository.findBy({ description: Like(`%${simpleQuery}%`) });
   }
 
   delApartaments(id: number): void {
